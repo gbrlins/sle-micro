@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE profile>
+<profile
+    xmlns="http://www.suse.com/1.0/yast2ns"
+    xmlns:config="http://www.suse.com/1.0/configns">
+    <bootloader>
+        <global>
+            <timeout config:type="integer">4</timeout>
+            <hiddenmenu>false</hiddenmenu>
+        </global>
+    </bootloader>
+    <general>
+        <mode>
+            <confirm config:type="boolean">false</confirm>
+            <second_stage config:type="boolean">false</second_stage>
+        </mode>
+    </general>
+    <networking>
+        <dns>
+            <dhcp_hostname config:type="boolean">true</dhcp_hostname>
+            <hostname>geeko-sle-micro</hostname>
+            <nameservers config:type="list">
+                <nameserver>8.8.8.8</nameserver>
+                <nameserver>1.1.1.1</nameserver>
+            </nameservers>
+        </dns>
+        <interfaces config:type="list">
+            <interface>
+                <bootproto>dhcp</bootproto>
+                <name>eth0</name>
+                <dhclient_set_default_route>yes</dhclient_set_default_route>
+                <startmode>auto</startmode>
+            </interface>
+            <interface>
+                <bootproto>static</bootproto>
+                <device>eth1</device>
+                <ipaddr>192.168.1.133</ipaddr>
+                <netmask>255.255.255.0</netmask>
+            </interface>
+        </interfaces>
+        <routing>
+            <ipv4_forward config:type="boolean">true</ipv4_forward>
+            <routes config:type="list">
+                <route>
+                    <destination>default</destination>
+                    <device>eth0</device>
+                    <gateway>192.168.1.1</gateway>
+                </route>
+                <route>
+                    <destination>default</destination>
+                    <device>eth1</device>
+                    <gateway>192.168.1.1</gateway>
+                </route>
+            </routes>
+        </routing>
+    </networking>
+    <suse_register>
+        <do_registration config:type="boolean">true</do_registration>
+        <email>gabriel.lins@suse.com</email>
+        <reg_code>INTERNAL-USE-ONLY-7ccb-7e0a</reg_code>
+        <install_updates config:type="boolean">true</install_updates>
+        <slp_discovery config:type="boolean">false</slp_discovery>
+    </suse_register>
+    <software>
+        <products config:type="list">
+            <product>SUSE-MicroOS</product>
+        </products>
+        <install_recommended config:type="boolean">
+        true
+    </install_recommended>
+        <packages config:type="list">
+            <package>grub2</package>
+        </packages>
+        <patterns config:type="list">
+            <pattern>basesystem</pattern>
+            <pattern>microos-base</pattern>
+            <pattern>microos-cockpit</pattern>
+            <pattern>microos-container_runtime</pattern>
+            <pattern>microos-selinux</pattern>
+            <pattern>microos-defaults</pattern>
+            <pattern>lp_sles</pattern>
+        </patterns>
+    </software>
+    <users config:type="list">
+        <user>
+            <username>root</username>
+            <user_password>root</user_password>
+            <encrypted config:type="boolean">false</encrypted>
+        </user>
+        <user>
+            <username>geeko</username>
+            <user_password>geeko</user_password>
+            <encrypted config:type="boolean">false</encrypted>
+        </user>
+    </users>
+    <kdump>
+        <add_crash_kernel config:type="boolean">false</add_crash_kernel>
+    </kdump>
+</profile>
