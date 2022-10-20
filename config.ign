@@ -1,0 +1,32 @@
+{
+  "ignition": {
+    "version": "3.2.0"
+  },
+  "passwd": {
+    "users": [
+      {
+        "name": "root",
+        "passwordHash": "$6$Rh7xVkjOhSi56y71$VKjHrFepRtvmDayhYHUuE73TKAsziWuT.jEUiAunRFrrqoknVkVYpsAcB8quChFjjACdmlPBYOM3GXROErsTQ1"
+      }
+    ]
+  },
+  "storage": {
+    "files": [
+      {
+        "path": "/etc/rancher/rke2/token",
+        "contents": {
+          "source": "data:,Gabriel%20Lins"
+        },
+        "mode": 420
+      },
+      {
+        "overwrite": true,
+        "path": "/root/.ssh/authorized_keys",
+        "contents": {
+          "source": "http://rmt.example.com:8080/authorized_keys"
+        },
+        "mode": 384
+      }
+    ]
+  }
+}
